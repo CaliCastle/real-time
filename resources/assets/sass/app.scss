@@ -1,0 +1,157 @@
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+$font: 'Lato', 'PingFang SC', '微软雅黑', san-serif;
+$tag-green: #4ca927;
+
+// 函数定义
+@mixin anim($content: 1s fadeInDown) {
+  -webkit-animation: $content;
+  -o-animation: $content;
+  animation: $content;
+}
+
+.Post {
+  // 状态修饰
+  &.Post__with-animation {
+    @include anim(1s fadeInDown backwards);
+  }
+
+  /**
+   Before 和 After的用法
+  */
+  //&:before {
+  //  content: attr(before);
+  //  font-size: 5em;
+  //  font-family: $font;
+  //  //font-family: 'FontAwesome';
+  //  cursor: text;
+  //}
+  //
+  //&:after {
+  //  content: attr(after);
+  //  font-size: 5em;
+  //  font-family: $font;
+  //  cursor: text;
+  //}
+
+  // & 代表同级
+  // CSS画分割线
+  //.Post__body:before {
+  //  content: '';
+  //  //background: rgba(0,0,0,0.5);
+  //  width: 80%;
+  //  left: calc((100% - 80%) / 2);
+  //  position: relative;
+  //  height: 2px;
+  //  display: block;
+  //  border-bottom: 2px dashed rgba(0,0,0,0.15);
+  //}
+
+  // 实战: 标签画法
+  .Post__tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      background: $tag-green;
+      color: #fff;
+      margin: 1em 1.2em;
+      padding: .5em;
+      display: inline-block;
+      position: relative;
+      border-radius: 5px;
+
+      &:before {
+        // 三角形
+        content: '';
+        border: 17px solid transparent;
+        border-right-color: $tag-green;
+        width: 0;
+        height: 0;
+        display: block;
+        position: absolute;
+        left: -32px;
+        top: 0;
+      }
+
+      &:after {
+        // 圆形
+        content: '';
+        display: block;
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        left: -7px;
+        top: 13px;
+        border-radius: 50%;
+        background: #fff;
+      }
+
+      /**
+      Nth, first, last (of-type, child)的用法
+      */
+      //&:first-of-type {
+      //  margin-left: 0 !important;
+      //}
+      //
+      //&:last-of-type {
+      //  margin-right: 0 !important;
+      //}
+
+      //@for $i from 1 through 10 {
+      //  &:nth-of-type(#{$i}) {
+      //    margin-right: 0 !important;
+      //  }
+      //}
+    }
+  }
+}
+
+// 蒙层覆盖
+.Overlay {
+  background: rgba(0,0,0,.6);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  // Z 轴
+  z-index: 9999;
+
+  &.Overlay--show {
+    display: block !important;
+    @include anim(.8s fadeIn backwards);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  //50% {
+  //  opacity: .4;
+  //}
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  //50% {
+  //  opacity: .4;
+  //  transform: translateY(-30px);
+  //}
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
