@@ -39,8 +39,8 @@ class NewMessage extends Event implements ShouldBroadcast
     public function broadcastWith()
     {
         return [
-//            'user' => User::first(),
-//            'message' => $this->message
+            'user' => User::first(),
+            'message' => $this->message
         ];
     }
 

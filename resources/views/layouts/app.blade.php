@@ -15,7 +15,10 @@
     <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
      <link href="{{ url('css/app.css') }}" rel="stylesheet">
 
-    {{--<script src="https://js.pusher.com/3.1/pusher.min.js"></script>--}}
+    <script>
+        var _TOKEN = "{{ csrf_token() }}";
+    </script>
+    <script src="https://js.pusher.com/3.1/pusher.min.js"></script>
 
     <style>
         body {
@@ -34,14 +37,14 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    {{--<script>--}}
-        {{--var PUSHER_KEY = "{{ config('broadcasting.connections.pusher.key') }}";--}}
-    {{--</script>--}}
+    <script>
+        var PUSHER_KEY = "{{ config('broadcasting.connections.pusher.key') }}";
+    </script>
     <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    {{--<script src="{{ url('js/pusher.js') }}"></script>--}}
-     <script src="{{ url('js/app.js') }}"></script>
+    <script src="{{ url('js/pusher.js') }}"></script>
+{{--     <script src="{{ url('js/app.js') }}"></script>--}}
 
     @stack('scripts')
 </body>

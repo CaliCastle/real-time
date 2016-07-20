@@ -39,7 +39,7 @@
             $(".Post").addClass('Post__with-animation');
 
             setTimeout(function () {
-                $(".Post").removeClass('Post__with-animation');
+                $(".Post").removeClass('Post__with-animat¡ion');
             }, 1000);
         });
 
